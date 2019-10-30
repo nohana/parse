@@ -39,8 +39,16 @@ func (c *callFnT) body() (string, error) {
 	return string(b), err
 }
 
+// 無理やりマスターキーを使わせる
+// todo 直す
+var shouldUseMasterKeyFunction = false
+
+func UseMasterKeyFunction(useMasterKey bool) {
+	shouldUseMasterKeyFunction = useMasterKey
+}
+
 func (c *callFnT) useMasterKey() bool {
-	return false
+	return shouldUseMasterKeyFunction
 }
 
 func (c *callFnT) session() *sessionT {
